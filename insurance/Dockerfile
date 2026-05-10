@@ -1,5 +1,6 @@
-FROM nginx:latest
-COPY index.html /usr/share/nginx/html/
+FROM ubuntu                   
+RUN apt update -y
+RUN apt install apache2 -y
+COPY index.html /var/www/html
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-
+CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
