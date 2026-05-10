@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: insurance-deploy
+  labels:
+    app: insu-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: insu-app
+  template:
+    metadata:
+      labels:
+        app: insu-app
+    spec:
+      containers:
+        - name: insu-con
+          image: IMAGE_NAME
+          ports:
+            - containerPort: 80
